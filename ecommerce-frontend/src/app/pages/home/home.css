@@ -1,0 +1,18 @@
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.home-page h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.home-page p {
+  color: #666;
+}
+
+.home-content {
+  margin-top: 40px;
+}

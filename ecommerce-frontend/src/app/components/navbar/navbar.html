@@ -1,0 +1,45 @@
+<nav class="navbar">
+
+  <div class="navbar-container">
+
+    <a routerLink="/home" class="logo">
+      🛒 My E-Commerce
+    </a>
+
+    <div class="nav-links">
+
+      <a routerLink="/home">
+        Home
+      </a>
+
+      <a routerLink="/electronics">
+        Electronics
+      </a>
+
+      <a routerLink="/health-beauty">
+        Health & Beauty
+      </a>
+
+      @if (isAdmin()) {
+        <a routerLink="/create-product">
+          Create Product
+        </a>
+      }
+
+      <a routerLink="/cart">
+        Cart
+      </a>
+
+      <button
+        type="button"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>

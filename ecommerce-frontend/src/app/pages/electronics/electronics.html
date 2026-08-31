@@ -1,0 +1,116 @@
+<div class="electronics-page">
+
+  <div class="page-header">
+
+    <h1>Electronics</h1>
+
+    <p>
+      Browse our electronics products.
+    </p>
+
+  </div>
+
+
+  @if (loading()) {
+
+    <div class="message">
+      Loading products...
+    </div>
+
+  }
+
+
+  @if (!loading() && products().length === 0) {
+
+    <div class="message">
+      No electronics products found.
+    </div>
+
+  }
+
+
+  @if (!loading() && products().length > 0) {
+
+    <div class="product-grid">
+
+      @for (product of products(); track product.id) {
+
+        <div class="product-card">
+
+          <div class="product-image">
+
+            @if (product.imageUrl) {
+
+              <img
+                [src]="product.imageUrl"
+                [alt]="product.name">
+
+            }
+
+            @if (!product.imageUrl) {
+
+              <div class="no-image">
+                No Image
+              </div>
+
+            }
+
+          </div>
+
+
+          <div class="product-info">
+
+            <h2>
+              {{ product.name }}
+            </h2>
+
+            <p class="description">
+              {{ product.description }}
+            </p>
+
+            <p class="price">
+              ${{ product.price }}
+            </p>
+
+            <p class="stock">
+              Stock: {{ product.stockQuantity }}
+            </p>
+
+            <p class="category">
+              {{ product.categoryName }}
+            </p>
+
+            <button type="button">
+              Add to Cart
+            </button>
+
+            @if (isAdmin()) {
+              <div class="admin-actions">
+
+                <a
+                  [routerLink]="['/edit-product', product.id]"
+                  class="edit-button">
+                  Edit
+                </a>
+                
+                <button
+                  type="button"
+                  class="delete-button"
+                  (click)="deleteProduct(product.id)">
+                  Delete
+                </button>
+                
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>

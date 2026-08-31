@@ -1,0 +1,25 @@
+# Java / Spring Boot
+ecommerce-backend/target/
+*.class
+
+# Angular
+ecommerce-frontend/node_modules/
+ecommerce-frontend/.angular/
+ecommerce-frontend/dist/
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+*.env
+application.properties
+application-local.properties

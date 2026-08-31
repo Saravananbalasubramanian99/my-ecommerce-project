@@ -1,0 +1,70 @@
+<div class="register-container">
+
+  <div class="register-card">
+
+    <h1>My E-Commerce Website</h1>
+
+    <h2>Create Account</h2>
+
+    <p class="subtitle">
+      Create your account to start shopping.
+    </p>
+
+    <form 
+    [formGroup]="registerForm"
+    (ngSubmit)="register()">            <!-- This HTML form is controlled by registerForm -->
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          placeholder="Enter your first name">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          placeholder="Enter your last name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password">
+      </div>
+
+      <button type="submit">
+        Create Account
+      </button>
+
+    </form>
+
+    <p class="login-link">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+
+  </div>
+
+</div>
