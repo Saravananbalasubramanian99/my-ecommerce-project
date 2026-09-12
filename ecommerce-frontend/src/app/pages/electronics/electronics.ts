@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 
 import { Product } from '../../services/product';
 import { Auth } from '../../services/auth';
+import { Cart } from '../../services/cart';
 
 import { Product as ProductModel } from '../../models/product';
 
@@ -25,7 +26,8 @@ export class Electronics implements OnInit {
 
   constructor(
     private productService: Product,
-    private authService: Auth
+    private authService: Auth,
+    private cartService: Cart
   ) {
   }
 
@@ -126,6 +128,23 @@ export class Electronics implements OnInit {
 
     });
 
-}
+  }
+
+  addToCart(productId: number): void {
+
+  const userId = Number(localStorage.getItem('userId'));
+
+  this.cartService
+    .addToCart(userId, productId, 1)
+    .subscribe({
+      next: () => {
+        alert('Product added to cart!');
+      },
+      error: (error) => {
+        console.error('Error adding product to cart:', error);
+        alert('Could not add product to cart.');
+      }
+    });
+  }
 
 }

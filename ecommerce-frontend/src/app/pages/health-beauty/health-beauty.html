@@ -80,7 +80,9 @@
               {{ product.categoryName }}
             </p>
 
-            <button type="button">
+            <button
+              type="button"
+              (click)="addToCart(product.id)">
               Add to Cart
             </button>
             

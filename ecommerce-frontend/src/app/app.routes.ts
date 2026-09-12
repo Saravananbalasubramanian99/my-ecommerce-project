@@ -9,6 +9,7 @@ import { MainLayout } from './layout/main-layout/main-layout';
 import { authGuard } from './guards/auth-guard';
 import { CreateProduct } from './pages/create-product/create-product';
 import { EditProduct } from './pages/edit-product/edit-product';
+import { CartComponent } from './cart/cart';
 
 export const routes: Routes = [
 
@@ -57,6 +58,11 @@ export const routes: Routes = [
       {
         path: 'edit-product/:id',
         component: EditProduct
+      },
+
+      {
+        path: 'cart',
+        component: CartComponent
       }
 
     ]
