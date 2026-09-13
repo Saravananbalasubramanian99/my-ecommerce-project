@@ -10,6 +10,7 @@ import { authGuard } from './guards/auth-guard';
 import { CreateProduct } from './pages/create-product/create-product';
 import { EditProduct } from './pages/edit-product/edit-product';
 import { CartComponent } from './cart/cart';
+import { OauthSuccess } from './oauth-success/oauth-success';
 
 export const routes: Routes = [
 
@@ -21,6 +22,11 @@ export const routes: Routes = [
   {
     path: 'register',
     component: Register
+  },
+
+  {
+    path: 'oauth-success',
+    component: OauthSuccess
   },
 
   {

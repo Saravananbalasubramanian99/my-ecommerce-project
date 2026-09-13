@@ -21,6 +21,8 @@ public class User {
     private String lastName;
 
     private String email;
+    
+    private String googleId;
 
     private String password;
 
@@ -98,4 +100,13 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public String getGoogleId() {
+		return googleId;
+	}
+
+	public void setGoogleId(String googleId) {
+		this.googleId = googleId;
+	}
+	
 }

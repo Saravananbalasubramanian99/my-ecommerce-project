@@ -1,10 +1,12 @@
 package com.ecommerce.backend.security;
 
 import java.nio.charset.StandardCharsets;
+
 import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,8 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY =
-            "my-super-secret-key-for-ecommerce-project-123456";
+	@Value("${jwt.secret}")
+	private String secretKey;
 
     private static final long EXPIRATION_TIME =
             1000 * 60 * 60; // 1 hour
@@ -26,7 +28,7 @@ public class JwtService {
     private SecretKey getSigningKey() {							//converting the string into a proper HMAC SHA key.
 
         return Keys.hmacShaKeyFor(								//This method takes your byte array and turns it into a SecretKey object.	
-                SECRET_KEY.getBytes(StandardCharsets.UTF_8)	 	//This converts the string into a byte array
+        		secretKey.getBytes(StandardCharsets.UTF_8)	 	//This converts the string into a byte array
         );
     }
 

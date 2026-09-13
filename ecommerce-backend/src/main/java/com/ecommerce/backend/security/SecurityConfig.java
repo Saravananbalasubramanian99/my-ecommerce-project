@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import com.ecommerce.backend.security.OAuth2AuthenticationSuccessHandler;
 
 import java.util.List;
 
@@ -21,12 +22,14 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final OAuth2AuthenticationSuccessHandler oauth2AuthenticationSuccessHandler;
 
     public SecurityConfig(
-            JwtAuthenticationFilter jwtAuthenticationFilter) {
+            JwtAuthenticationFilter jwtAuthenticationFilter,
+            OAuth2AuthenticationSuccessHandler oauth2AuthenticationSuccessHandler) {
 
-        this.jwtAuthenticationFilter =
-                jwtAuthenticationFilter;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.oauth2AuthenticationSuccessHandler = oauth2AuthenticationSuccessHandler;
     }
 
     @Bean
@@ -66,6 +69,10 @@ public class SecurityConfig {
                     SessionCreationPolicy.STATELESS	//Make the app stateless
                 )
             )
+            
+            .oauth2Login(oauth2 ->
+	            oauth2.successHandler(oauth2AuthenticationSuccessHandler)
+	        )
 
             .authorizeHttpRequests(auth -> auth		//This block defines who can access what.
 
